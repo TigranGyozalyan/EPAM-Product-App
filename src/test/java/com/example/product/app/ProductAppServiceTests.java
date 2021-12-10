@@ -2,14 +2,11 @@ package com.example.product.app;
 
 import com.example.product.app.domain.dto.CreateProductDto;
 import com.example.product.app.exception.RestException;
-import com.example.product.app.service.ProductService;
 import com.example.product.app.service.impl.ProductServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 
 import java.math.BigDecimal;
 
@@ -26,6 +23,13 @@ class ProductAppServiceTests {
         var result = productService.getById(PRODUCT_ID);
 
         Assertions.assertEquals(PRODUCT_ID, result.getId());
+    }
+
+    @Test
+    void should_find_products() {
+        var result = productService.getAll();
+
+        Assertions.assertFalse(result.isEmpty());
     }
 
     @Test

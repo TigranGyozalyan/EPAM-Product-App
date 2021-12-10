@@ -7,15 +7,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping
-    public ResponseEntity<?> findProductById(@RequestParam("id") Integer id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findProductById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(productService.getById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAllProducts() {
+        return ResponseEntity.ok(productService.getAll());
     }
 
     @PostMapping

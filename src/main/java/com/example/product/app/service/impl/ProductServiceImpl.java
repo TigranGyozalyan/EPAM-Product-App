@@ -10,6 +10,9 @@ import com.example.product.app.validation.ProductValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -31,6 +34,13 @@ public class ProductServiceImpl implements ProductService {
         repository.save(product);
 
         return toDto(product);
+    }
+
+    @Override
+    public List<ProductDto> getAll() {
+        return repository.findAll().stream()
+            .map(this::toDto)
+            .collect(Collectors.toList());
     }
 
     private Product toEntity(CreateProductDto dto) {
