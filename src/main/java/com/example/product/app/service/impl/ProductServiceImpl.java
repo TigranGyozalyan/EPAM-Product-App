@@ -3,8 +3,10 @@ package com.example.product.app.service.impl;
 import com.example.product.app.domain.dto.CreateProductDto;
 import com.example.product.app.domain.dto.ProductDto;
 import com.example.product.app.domain.entity.Product;
+import com.example.product.app.exception.NotFoundException;
 import com.example.product.app.repository.ProductRepository;
 import com.example.product.app.service.ProductService;
+import com.example.product.app.validation.ProductValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +15,18 @@ import org.springframework.stereotype.Service;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository repository;
+    private final ProductValidator validator;
 
     @Override
     public ProductDto getById(Integer id) {
-        return null;
+        return repository.findById(id)
+            .map(this::toDto)
+            .orElseThrow(NotFoundException::new);
     }
 
     @Override
     public ProductDto create(CreateProductDto dto) {
+        validator.validate(dto);
         Product product = toEntity(dto);
         repository.save(product);
 
@@ -38,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductDto toDto(Product product) {
         ProductDto dto = new ProductDto();
 
-        dto.setId(dto.getId());
+        dto.setId(product.getId());
         dto.setName(product.getName());
         dto.setPrice(product.getPrice());
 
