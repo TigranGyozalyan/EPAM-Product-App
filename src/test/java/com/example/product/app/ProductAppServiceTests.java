@@ -33,8 +33,11 @@ class ProductAppServiceTests {
         var createDto = ProductUtils.getValidProductCreateDto();
         var result = productService.create(createDto);
 
-        Assertions.assertEquals(result.getName(), createDto.getName());
-        Assertions.assertEquals(result.getPrice(), createDto.getPrice());
+        Assertions.assertAll(
+            () -> Assertions.assertEquals(result.getName(), createDto.getName()),
+            () -> Assertions.assertEquals(result.getPrice(), createDto.getPrice())
+        );
+
     }
 
     @Test

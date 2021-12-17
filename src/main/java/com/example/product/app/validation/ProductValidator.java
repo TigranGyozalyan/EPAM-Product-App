@@ -18,11 +18,11 @@ public class ProductValidator {
         Map<String, String> errorMap = new HashMap<>();
 
         if (createProductDto.getName() == null || createProductDto.getName().trim().isEmpty()) {
-            errorMap.put("name", "Invalid name");
+            errorMap.put(CreateProductDto.Fields.name, "Invalid name");
         }
 
         if (createProductDto.getPrice() == null || createProductDto.getPrice().compareTo(BigDecimal.ZERO) < 0) {
-            errorMap.put("price", "Invalid price");
+            errorMap.put(CreateProductDto.Fields.price, "Invalid price");
         }
 
         if(!errorMap.isEmpty()) {
