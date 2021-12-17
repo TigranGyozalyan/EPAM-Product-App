@@ -1,6 +1,6 @@
 package com.example.product.app;
 
-import com.example.product.app.domain.dto.CreateProductDto;
+import com.example.product.app.domain.dto.in.CreateProductDto;
 import com.example.product.app.domain.entity.Product;
 
 import java.math.BigDecimal;

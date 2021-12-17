@@ -1,7 +1,7 @@
 package com.example.product.app.mapper;
 
-import com.example.product.app.domain.dto.CreateProductDto;
-import com.example.product.app.domain.dto.ProductDto;
+import com.example.product.app.domain.dto.in.CreateProductDto;
+import com.example.product.app.domain.dto.out.ProductDto;
 import com.example.product.app.domain.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

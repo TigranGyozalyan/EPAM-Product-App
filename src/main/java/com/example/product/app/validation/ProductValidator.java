@@ -1,6 +1,6 @@
 package com.example.product.app.validation;
 
-import com.example.product.app.domain.dto.CreateProductDto;
+import com.example.product.app.domain.dto.in.CreateProductDto;
 import com.example.product.app.exception.RestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
