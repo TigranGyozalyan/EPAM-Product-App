@@ -8,11 +8,11 @@
         <version>2.6.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.example</groupId>
     <artifactId>productapp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>productapp</name>
-    <description>productapp</description>
+    <version>1.0</version>
+
     <properties>
         <java.version>11</java.version>
     </properties>
